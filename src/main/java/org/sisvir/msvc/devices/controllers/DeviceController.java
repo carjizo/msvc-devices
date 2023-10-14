@@ -24,6 +24,7 @@ public class DeviceController {
     private DeviceService deviceService;
 
     @GetMapping("/getAll")
+    @CrossOrigin
     public ResponseEntity<?> listar() {
 
         List<DeviceDTO> deviceDTOList = deviceService.findAll()
