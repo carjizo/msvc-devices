@@ -54,6 +54,22 @@ public class DeviceController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/mac/{mac}")
+    public ResponseEntity<?> detailByMac(@PathVariable String mac) {
+
+        Optional<Device> deviceOptional = deviceService.findByMac(mac);
+        if (deviceOptional.isPresent()) {
+            Device device = deviceOptional.get();
+            DeviceDTO deviceDTO = DeviceDTO.builder()
+                    .id(device.getId())
+                    .mac(device.getMac())
+                    .code(device.getCode())
+                    .build();
+            return ResponseEntity.ok(deviceDTO);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> crear(@Valid @RequestBody DeviceDTO deviceDTO, BindingResult result) throws URISyntaxException {
 

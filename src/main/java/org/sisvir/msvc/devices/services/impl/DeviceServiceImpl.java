@@ -30,6 +30,11 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    public Optional<Device> findByMac(String mac) {
+        return deviceDAO.findByMac(mac);
+    }
+
+    @Override
     public void create(Device device) {
         deviceDAO.create(device);
     }

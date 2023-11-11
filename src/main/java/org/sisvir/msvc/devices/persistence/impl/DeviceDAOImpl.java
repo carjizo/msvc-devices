@@ -29,6 +29,12 @@ public class DeviceDAOImpl implements DeviceDAO {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<Device> findByMac(String mac) {
+        return deviceRepository.findByMac(mac);
+    }
+
+    @Override
     @Transactional
     public void create(Device device) {
         deviceRepository.save(device);

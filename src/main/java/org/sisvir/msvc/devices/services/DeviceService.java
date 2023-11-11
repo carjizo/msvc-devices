@@ -11,6 +11,8 @@ public interface DeviceService {
 
     Optional<Device> findById(Long id);
 
+    Optional<Device> findByMac(String mac);
+
     void create(Device device);
 
     void deleteById(Long id);
